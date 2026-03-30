@@ -2,7 +2,7 @@
 
 Great progress! You're already an expert on uploading workflow artifacts!
 
-Now how do you download these artifacts in GitHub Actions workflows?
+Now, how do you download these artifacts in GitHub Actions workflows?
 
 Let's learn that!
 
@@ -57,13 +57,13 @@ Let's set up a workflow that will build the site and upload it as an artifact, t
              path: dist
    ```
 
-   This job builds the site and uploads it as `octomatch` artifact so other jobs can download it.
+   This job builds the site and uploads it as an `octomatch` artifact so other jobs can download it.
 
    It will run on every push to `main` and can also be triggered manually from the Actions tab.
 
-1. Now let's add a `dev` job that will download that artifact.
+1. Now let's add another job that will download that artifact.
 
-   Add the following content under `jobs:` in the same workflow file:
+   Add the following `dev` job after the existing `build` job in the same `build-deploy.yml` workflow file:
 
    ```yaml
    dev:

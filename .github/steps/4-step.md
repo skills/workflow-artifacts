@@ -35,7 +35,7 @@ Let's set up a prod deployment workflow that will run every time your build work
 
     This workflow will trigger every time the `Build and Deploy` workflow run completes.
 
-    Configure `actions: read` permissions so this workflow can download artifacts from other workflows.
+    The `actions: read` permission is included so this workflow can download artifacts from other workflows.
 
 1. Now let's add a job that will download the artifact produced by the `Build and Deploy` workflow.
 

@@ -93,13 +93,13 @@ Nice work! If you want an extra challenge, this bonus activity adds an approval 
 
 1. Go to your repository **[settings](https://github.com/{{full_repo_name}}/settings)**.
 1. In the left sidebar, select **[Environments](https://github.com/{{full_repo_name}}/settings/environments)** tab.
-1. Click the **Prod** environment to edit it. Add yourself (`{{ login }}`) as a required reviewer and save the changes.
+1. Click the **prod** environment to edit it. Add yourself (`{{ login }}`) as a required reviewer and save the changes.
 
     <img width="900" alt="Prod environment settings showing required reviewers" src="../images/required-reviewers.png" />
 
    This will cause any job that targets `environment: prod` to pause and wait for your review before proceeding.
 
-1. Go to the **[Actions](https://github.com/{{full_repo_name}}/actions/workflows/build-deploy.yml)** tab and manually trigger the `Build and Deploy` workflow.
+1. Go to the **[Actions](https://github.com/{{full_repo_name}}/actions/workflows/build-deploy.yml)** tab and use the `Run workflow` dropdown to manually trigger the `Build and Deploy` workflow.
 
    <img width="900" alt="Manually trigger the Build and Deploy workflow from the Actions tab" src="../images/trigger-build-deploy.png" />
 

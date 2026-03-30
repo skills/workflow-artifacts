@@ -15,13 +15,13 @@ This is useful when the uploaded file can be opened directly in the browser, whi
 > [!IMPORTANT]
 > Direct uploads are currently only available for single files.
 
-### ⌨️ Activity: Add Playwright E2E tests with direct artifact upload
+### ⌨️ Activity: Run browser tests and upload a report you can open
 
-Now we will extend the workflow to run [Playwright](https://playwright.dev/) browser-based E2E tests and upload a single HTML report that can be previewed in the browser.
+Now we will extend the workflow to run [Playwright](https://playwright.dev/) browser-based **end-to-end (E2E)** tests and upload a single HTML report that can be previewed in the browser.
 
 1. Open `.github/workflows/tests.yml` in your codespace.
 
-1. Add a new job to the workflow file with the following content:
+1. Add the below `e2e` job after the existing `coverage` job in the workflow file:
 
    ```yaml
    e2e:

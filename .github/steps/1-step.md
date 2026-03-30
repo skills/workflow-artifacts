@@ -12,13 +12,15 @@ You've already set up tests that generate useful reports. Now you want to run th
 
 To do that, your team has decided to upload these reports as 📦 **workflow artifacts**.
 
-| Playwright Test Report                                                                 | Coverage Report                                                               |
+| Browser Tests Report                                                                 | Coverage Report                                                               |
 | -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | <img width="450" alt="Playwright test report" src="../images/playwright-report.png" /> | <img width="450" alt="Coverage report" src="../images/coverage-report.png" /> |
 
 ### 📖 Theory: What are workflow artifacts, and when should you use them?
 
-A **workflow artifact** is a file or collection of files produced during a workflow run.
+In GitHub Actions, every job runs on a fresh virtual machine or container. This means that any files generated during a job will be lost once the job finishes.
+
+A **workflow artifact** is a file or collection of files saved during a workflow run.
 
 Artifacts let you keep useful outputs after a job finishes so your team can inspect them later or use them in subsequent workflow jobs.
 

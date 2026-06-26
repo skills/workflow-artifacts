@@ -58,47 +58,48 @@ jobs:
 
       # START: Check practical exercise
 
-      - name: Check for Playwright test command
-        id: check-playwright-command
-        continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1
-        with:
-          text-file: .github/workflows/tests.yml
-          keyphrase: "npm run test:e2e"
+      - parallel:
+          - name: Check for Playwright test command
+            id: check-playwright-command
+            continue-on-error: true
+            uses: skills/action-keyphrase-checker@v1
+            with:
+              text-file: .github/workflows/tests.yml
+              keyphrase: "npm run test:e2e"
 
-      - name: Check for Playwright artifact action version
-        id: check-playwright-upload-version
-        continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1
-        with:
-          text-file: .github/workflows/tests.yml
-          keyphrase: "uses: actions/upload-artifact@v7"
-          minimum-occurrences: 2
+          - name: Check for Playwright artifact action version
+            id: check-playwright-upload-version
+            continue-on-error: true
+            uses: skills/action-keyphrase-checker@v1
+            with:
+              text-file: .github/workflows/tests.yml
+              keyphrase: "uses: actions/upload-artifact@v7"
+              minimum-occurrences: 2
 
-      - name: Check for Playwright report path
-        id: check-playwright-report-path
-        continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1
-        with:
-          text-file: .github/workflows/tests.yml
-          keyphrase: "path: playwright-report/index.html"
+          - name: Check for Playwright report path
+            id: check-playwright-report-path
+            continue-on-error: true
+            uses: skills/action-keyphrase-checker@v1
+            with:
+              text-file: .github/workflows/tests.yml
+              keyphrase: "path: playwright-report/index.html"
 
-      - name: Check for direct single-file upload
-        id: check-direct-upload
-        continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1
-        with:
-          text-file: .github/workflows/tests.yml
-          keyphrase: "archive: false"
+          - name: Check for direct single-file upload
+            id: check-direct-upload
+            continue-on-error: true
+            uses: skills/action-keyphrase-checker@v1
+            with:
+              text-file: .github/workflows/tests.yml
+              keyphrase: "archive: false"
 
-      - name: Lint tests.yml with actionlint
-        id: check-actionlint
-        continue-on-error: true
-        uses: raven-actions/actionlint@v2.1.1
-        with:
-          files: .github/workflows/tests.yml
-          version: 1.7.10
-          fail-on-error: true
+          - name: Lint tests.yml with actionlint
+            id: check-actionlint
+            continue-on-error: true
+            uses: raven-actions/actionlint@v2.1.1
+            with:
+              files: .github/workflows/tests.yml
+              version: 1.7.10
+              fail-on-error: true
 
       - name: Update comment - step results
         uses: GrantBirki/comment@v2.1.1

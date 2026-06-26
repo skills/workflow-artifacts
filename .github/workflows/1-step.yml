@@ -59,36 +59,37 @@ jobs:
 
       # START: Check practical exercise
 
-      - name: Check if workflow file exists
-        id: check-workflow-file
-        continue-on-error: true
-        uses: skills/exercise-toolkit/actions/file-exists@v0.9.1
-        with:
-          file: .github/workflows/tests.yml
+      - parallel:
+          - name: Check if workflow file exists
+            id: check-workflow-file
+            continue-on-error: true
+            uses: skills/exercise-toolkit/actions/file-exists@v0.9.1
+            with:
+              file: .github/workflows/tests.yml
 
-      - name: Check for upload-artifact usage
-        id: check-upload-artifact
-        continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1
-        with:
-          text-file: .github/workflows/tests.yml
-          keyphrase: "uses: actions/upload-artifact@v7"
+          - name: Check for upload-artifact usage
+            id: check-upload-artifact
+            continue-on-error: true
+            uses: skills/action-keyphrase-checker@v1
+            with:
+              text-file: .github/workflows/tests.yml
+              keyphrase: "uses: actions/upload-artifact@v7"
 
-      - name: Check for coverage artifact path
-        id: check-coverage-path
-        continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1
-        with:
-          text-file: .github/workflows/tests.yml
-          keyphrase: "path: coverage/"
+          - name: Check for coverage artifact path
+            id: check-coverage-path
+            continue-on-error: true
+            uses: skills/action-keyphrase-checker@v1
+            with:
+              text-file: .github/workflows/tests.yml
+              keyphrase: "path: coverage/"
 
-      - name: Check for coverage test command
-        id: check-coverage-command
-        continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1
-        with:
-          text-file: .github/workflows/tests.yml
-          keyphrase: "npm run test:coverage"
+          - name: Check for coverage test command
+            id: check-coverage-command
+            continue-on-error: true
+            uses: skills/action-keyphrase-checker@v1
+            with:
+              text-file: .github/workflows/tests.yml
+              keyphrase: "npm run test:coverage"
 
       - name: Update comment - step results
         uses: GrantBirki/comment@v2.1.1

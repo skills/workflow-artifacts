@@ -41,3 +41,4 @@ jobs:
           name: playwright-report
           path: playwright-report/index.html
           archive: false
+          
